@@ -4,6 +4,7 @@ console.log('JS OK!')
 const app = new Vue ({
     el: '#app',
     data: {
+        activeIndex: 0,
         slides : [
             {
                 image: 'img/01.jpg',
@@ -33,7 +34,27 @@ const app = new Vue ({
                 title: 'Paradise',
                 text: 'Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam inventore eligendi ex ad ullam, cumque provident totam omnis.',
             }
-        ]}  
-})
+        ]}, 
+
+        methods: {
+            showPreviousImage:function(){
+                console.log('showPreviousImage');
+                if (this.activeIndex > 0){
+                    this.activeIndex--;
+                } else {
+                    this.activeIndex = this.slides.length -1;
+                }
+                
+            },
+            showNextImage(){
+                console.log('showNextImage');
+                if (this.activeIndex === this.slides.length -1){
+                    this.activeIndex = 0;
+                } this.activeIndex++;
+                
+            }
+        }
+        
+    })
 
 
